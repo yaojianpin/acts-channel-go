@@ -35,6 +35,8 @@ type MessageOptions struct {
 	Tag string `protobuf:"bytes,4,opt,name=tag,proto3" json:"tag,omitempty"`
 	// message key
 	Key string `protobuf:"bytes,5,opt,name=key,proto3" json:"key,omitempty"`
+	// message uses
+	Uses string `protobuf:"bytes,6,opt,name=uses,proto3" json:"uses,omitempty"`
 }
 
 func (x *MessageOptions) Reset() {

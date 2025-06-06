@@ -16,7 +16,7 @@ func main() {
         - name: step 1
           id: step1
           acts:
-              - act: irq
+              - uses: acts.core.irq
                 key: abc
     `
 

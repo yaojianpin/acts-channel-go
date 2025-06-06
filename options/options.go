@@ -7,17 +7,20 @@ type ActsOptions struct {
 	State string
 	Tag   string
 	Key   string
+	Uses  string
 	Ack   bool
 }
 
 type Message struct {
-	Type  string `json:"type"`
-	Pid   string `json:"pid"`
-	Tid   string `json:"tid"`
-	Key   string `json:"key"`
-	State string `json:"state"`
-	Name  string `json:"name"`
-
+	Type    string         `json:"type"`
+	Pid     string         `json:"pid"`
+	Tid     string         `json:"tid"`
+	Nid     string         `json:"nid"`
+	Key     string         `json:"key"`
+	Uses    string         `json:"uses"`
+	State   string         `json:"state"`
+	Name    string         `json:"name"`
+	Tag     string         `json:"tag"`
 	Model   map[string]any `json:"model"`
 	Inputs  map[string]any `json:"inputs"`
 	Outputs map[string]any `json:"outputs"`
@@ -27,7 +30,7 @@ type Options func(*ActsOptions)
 type Callback func(any)
 
 func DefaultOptions() ActsOptions {
-	return ActsOptions{Type: ALL_PATTERN, State: ALL_PATTERN, Tag: ALL_PATTERN, Key: ALL_PATTERN}
+	return ActsOptions{Type: ALL_PATTERN, State: ALL_PATTERN, Tag: ALL_PATTERN, Key: ALL_PATTERN, Uses: ALL_PATTERN}
 }
 
 func WithType(typ string) Options {
@@ -57,5 +60,11 @@ func WithTag(tag string) Options {
 func WithAck(ack bool) Options {
 	return func(v *ActsOptions) {
 		v.Ack = ack
+	}
+}
+
+func WithUses(uses string) Options {
+	return func(v *ActsOptions) {
+		v.Uses = uses
 	}
 }
